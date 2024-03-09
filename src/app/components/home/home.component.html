@@ -1,0 +1,48 @@
+<section class="home my-4">
+  <!-- <div *ngIf="isLoading"
+    class="loadingScreen position-fixed top-0 start-0 end-0 bottom-0 bg-white d-flex justify-content-center align-items-center z-2">
+    <span class="loader"></span>
+  </div> -->
+
+  <app-main-slider></app-main-slider>
+
+  <app-category-slider></app-category-slider>
+
+  <div class="w-75 mx-auto">
+    <input class="form-control" [(ngModel)]="term" type="text" placeholder="search by title.....">
+  </div>
+
+
+  <div class="row mt-5">
+    <div *ngFor="let product of productList|search:term" class="col-md-3">
+      <div class="product px-2 py-4 cursor-pointer">
+        <div [routerLink]="['/proudectdetails',product._id]">
+          <img class="w-100" src="{{product.imageCover}}" alt="">
+          <span class="text-main font-sm fw-bolder mb-1">{{product.category.name}}</span>
+          <h3 class="h6">{{product.title.split(' ').splice(0,2).join(' ')}}</h3>
+          <div class="d-flex justify-content-between">
+            <span>{{product.price}}EGY</span>
+            <span>
+              <i [class.rating-color]="product.ratingsAverage >= num" *ngFor="let num of [1,2,3,4,5]"
+                class="fa fa-star "></i>
+              {{product.ratingsAverage}}
+            </span>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center align-items-center py-2">
+          <button (click)="addProductToCart(product._id)" class="btn bg-main text-white w-100 me-2">+ Add</button>
+          <!-- <div (click)="getIdOfProduct(product._id)"> -->
+          <!-- <div *ngIf="!productId"> -->
+          <i *ngIf="!wishList.includes(product._id)" (click)="addProductToWishList(product._id)"
+            class="fa fa-heart fa-2x cursor-pointer"></i>
+          <!-- </div> -->
+          <!-- <div *ngIf="productId"> -->
+          <i *ngIf="wishList.includes(product._id)" (click)="removeProductFromWishList(product._id)"
+            class="fa fa-heart fa-2x cursor-pointer text-danger"></i>
+          <!-- </div> -->
+          <!-- </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

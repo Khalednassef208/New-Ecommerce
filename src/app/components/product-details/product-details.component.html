@@ -1,0 +1,41 @@
+<!-- <div *ngIf="isLoading"
+  class="loadingScreen position-fixed top-0 start-0 end-0 bottom-0 bg-white d-flex justify-content-center align-items-center ">
+  <span class="loader"></span>
+</div> -->
+
+<div class="row align-items-center">
+  <div class="col-md-4">
+    <owl-carousel-o [options]="customOptions">
+
+      <ng-container *ngFor="let productImg of productItem?.images">
+        <ng-template carouselSlide [id]="productItem?._id">
+          <img [src]="productImg" [alt]="productImg?.title">
+        </ng-template>
+      </ng-container>
+
+    </owl-carousel-o>
+  </div>
+  <div class="col-8">
+    <h2>{{productItem?.title}}</h2>
+    <p>{{productItem?.description}}</p>
+    <span class="font-sm text-muted">{{productItem?.category.name}}</span>
+    <div class="d-flex justify-content-between">
+      <span>{{productItem?.price}}EGY</span>
+      <span>
+        <i class="fa fa-star rating-color"></i>
+        {{productItem?.ratingsAverage}}
+      </span>
+    </div>
+    <div class="d-flex justify-content-between align-items-center py-2">
+      <button (click)="addProductToCart(productItem?._id)" class="btn bg-main text-white w-75 mx-auto d-block">+
+        Add</button>
+      <i *ngIf="!wishList.includes(productItem?._id)" (click)="addProductToWishList(productItem?._id)"
+        class="fa fa-heart fa-2x cursor-pointer"></i>
+      <!-- </div> -->
+      <!-- <div *ngIf="productId"> -->
+      <i *ngIf="wishList.includes(productItem?._id)" (click)="removeProductFromWishList(productItem?._id)"
+        class="fa fa-heart fa-2x cursor-pointer text-danger"></i>
+      <!-- </div> -->
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<section class="wishlist bg-wish overflow-hidden my-5">
+  <div class="my-5">
+    <h2 class="fw-bold ">my wish list</h2>
+
+  </div>
+  <div *ngFor="let product of productList"
+    class="row border-bottom my-5 d-flex align-items-center p-2 ng-star-inserted ">
+    <div class="col-md-2">
+      <img class="w-100" [src]="product.imageCover" alt="">
+    </div>
+    <div class="col-md-10 d-flex justify-content-between">
+      <div>
+        <h5>{{product.title}}</h5>
+        <h6 class="text-success">{{product.price}}EGY</h6>
+        <button (click)="removeProductFromWishlist(product._id)" class="btn btn-sm m-0 p-0 text-danger">
+          <i class="fa fa-trash"></i>
+          remove product</button>
+      </div>
+      <div>
+        <button (click)="addProductToCart(product._id)"
+          class="btn-count btn btn-lg d-block mx-auto bg-main text-white">Add To Cart</button>
+      </div>
+    </div>
+  </div>
+</section>

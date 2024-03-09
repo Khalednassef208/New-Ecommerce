@@ -1,0 +1,90 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light sticky-top">
+  <div class="container">
+    <a class="navbar-brand" [routerLink]="['/home']">
+      <div class="d-flex justify-content-center align-items-center">
+        <i class="fa-solid fa-cart-shopping nav-icon"></i>
+        <span class="h3 fw-bold">FreshCart</span>
+      </div>
+    </a>
+    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId"
+      aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+      <ul class="navbar-nav m-auto mt-2 mt-lg-0">
+
+        <li *ngIf="isLogin" class="nav-item">
+          <a class="nav-link" [routerLink]="['/home']" [routerLinkActive]="['bg-main','text-white','rounded']">Home</a>
+        </li>
+        <li *ngIf="isLogin" class="nav-item">
+          <a class="nav-link" [routerLink]="['/wishlist']" [routerLinkActive]="['bg-main','text-white','rounded']">Wish
+            List</a>
+        </li>
+        <li *ngIf="isLogin" class="nav-item">
+          <a class="nav-link" [routerLink]="['/cart']" [routerLinkActive]="['bg-main','text-white','rounded']">Cart</a>
+        </li>
+        <li *ngIf="isLogin" class="nav-item">
+          <a class="nav-link" [routerLink]="['/products']"
+            [routerLinkActive]="['bg-main','text-white','rounded']">Products</a>
+        </li>
+        <li *ngIf="isLogin" class="nav-item">
+          <a class="nav-link" [routerLink]="['/categories']"
+            [routerLinkActive]="['bg-main','text-white','rounded']">Categories</a>
+        </li>
+        <li *ngIf="isLogin" class="nav-item">
+          <a class="nav-link" [routerLink]="['/brands']"
+            [routerLinkActive]="['bg-main','text-white','rounded']">Brands</a>
+        </li>
+
+      </ul>
+      <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+
+        <!-- <li class="nav-item d-flex align-items-center ">
+          <a href="#" class="pe-3">
+            <i class="fa fa-brands fa-facebook"></i>
+          </a>
+          <a href="#" class="pe-3">
+            <i class="fa fa-brands fa-twitter"></i>
+          </a>
+          <a href="#" class="pe-3">
+            <i class="fa fa-brands fa-linkedin"></i>
+          </a>
+          <a href="#" class="pe-3">
+            <i class="fa fa-brands fa-tiktok"></i>
+          </a>
+          <a href="#" class="pe-3">
+            <i class="fa fa-brands fa-instagram"></i>
+          </a>
+          <a href="#" class="pe-3">
+            <i class="fa fa-brands fa-youtube"></i>
+          </a>
+        </li> -->
+        <li *ngIf="!isLogin" class="nav-item">
+          <a class="nav-link" [routerLink]="['/register']"
+            [routerLinkActive]="['bg-main','text-white','rounded']">Register</a>
+        </li>
+        <li *ngIf="!isLogin" class="nav-item">
+          <a class="nav-link" [routerLink]="['/login']"
+            [routerLinkActive]="['bg-main','text-white','rounded']">login</a>
+        </li>
+        <li *ngIf="isLogin" class="nav-item">
+          <a [routerLink]="['/cart']" class="nav-link cursor-pointer position-relative">
+            <i class="fa fa-cart-shopping fs-3">
+              <div class="badge position-absolute text-white top-0 end-0 bg-main count">{{numOfCartItems}}
+              </div>
+            </i>
+          </a>
+        </li>
+        <li (click)="_AuthService.logOut()" *ngIf="isLogin" class="nav-item">
+          <a class="nav-link cursor-pointer" [routerLinkActive]="['bg-main','text-white','rounded']">logOut</a>
+        </li>
+        <!-- <li *ngIf="isLogin" class="nav-item">
+          <a class="nav-link cursor-pointer" [routerLink]="['/settings']"
+            [routerLinkActive]="['bg-main','text-white']">Settings</a>
+        </li> -->
+
+      </ul>
+
+    </div>
+  </div>
+</nav>

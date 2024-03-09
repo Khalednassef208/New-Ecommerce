@@ -1,0 +1,8 @@
+p {
+  cursor: pointer;
+  transition: .5s;
+}
+
+p:hover {
+  color: var(--main-color);
+}

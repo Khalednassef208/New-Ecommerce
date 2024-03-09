@@ -1,0 +1,14 @@
+<div class="category-slider mt-5">
+  <h2>Show Popular Categories</h2>
+
+  <owl-carousel-o [options]="customOptions">
+
+    <ng-container *ngFor="let category of categoryList">
+      <ng-template carouselSlide [id]="category._id">
+        <img height="300" [src]="category.image" [alt]="category.name">
+        <h3 class="fw-bold">{{category.name}}</h3>
+      </ng-template>
+    </ng-container>
+
+  </owl-carousel-o>
+</div>

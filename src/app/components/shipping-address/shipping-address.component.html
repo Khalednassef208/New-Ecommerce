@@ -1,0 +1,32 @@
+<section class="my-4">
+  <div class="mt-4">
+    <form [formGroup]="shippingAddress" (ngSubmit)="submitShippingAddress(shippingAddress)">
+      <div class="mb-3">
+        <label for="">Details : </label>
+        <input formControlName="details" type="text" class="form-control">
+        <div *ngIf="shippingAddress.get('details')?.touched && shippingAddress.get('details')?.errors"
+          class="alert alert-danger p-0 mt-2">
+          <p *ngIf="shippingAddress.get('details')?.errors?.['required']" class="p-1 m-0">Details is required</p>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="">Phone : </label>
+        <input formControlName="phone" type="tel" class="form-control">
+        <div *ngIf="shippingAddress.get('phone')?.touched && shippingAddress.get('phone')?.errors"
+          class="alert alert-danger p-0 mt-2">
+          <p *ngIf="shippingAddress.get('phone')?.errors?.['required']" class="p-1 m-0">phone is required</p>
+          <p *ngIf="shippingAddress.get('phone')?.errors?.['pattern']" class="p-1 m-0">enter egyption number</p>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="">City : </label>
+        <input formControlName="city" type="text" class="form-control">
+        <div *ngIf="shippingAddress.get('city')?.touched && shippingAddress.get('city')?.errors"
+          class="alert alert-danger p-0 mt-2">
+          <p *ngIf="shippingAddress.get('city')?.errors?.['required']" class="p-1 m-0">City is required</p>
+        </div>
+      </div>
+      <button [disabled]="shippingAddress.invalid" class="btn-outline-info  d-block w-100 btn mb-3">Pay now</button>
+    </form>
+  </div>
+</section>

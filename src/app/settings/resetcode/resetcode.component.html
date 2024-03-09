@@ -1,0 +1,8 @@
+<section class="my-5">
+  <form [formGroup]="verifyCode" (ngSubmit)="resetCode()">
+    <h2 class="fw-bold">please enter your email</h2>
+    <input formControlName="resetCode" class="form-control w-100 mx-auto" type="text" name="resetCode"
+      placeholder="resetcode">
+    <button [disabled]="verifyCode.invalid" class="btn bg-main text-white d-block me-auto mt-3">reset</button>
+  </form>
+</section>
